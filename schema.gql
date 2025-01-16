@@ -161,6 +161,78 @@ type StudentResults {
   page: Page
 }
 
+type OrderTimeType {
+  """开始时间"""
+  startTime: String!
+
+  """结束时间"""
+  endTime: String!
+
+  """key"""
+  key: Float!
+}
+
+type ReducibleTimeType {
+  """周几"""
+  week: String!
+
+  """可约时间 json"""
+  orderTime: [OrderTimeType!]!
+}
+
+type CourseType {
+  id: String!
+  createdAt: DateTime!
+  createdBy: String
+  updatedAt: DateTime
+  updatedBy: String
+  deletedAt: DateTime
+  deletedBy: String
+
+  """课程名称"""
+  name: String!
+
+  """课程描述"""
+  desc: String
+
+  """适龄人群"""
+  group: String!
+
+  """适合基础"""
+  baseAbility: String!
+
+  """限制上课人数"""
+  limitNumber: Float!
+
+  """持续时间"""
+  duration: Float!
+
+  """预约信息"""
+  reserveInfo: String
+
+  """退款信息"""
+  refundInfo: String
+
+  """其他说明信息"""
+  otherInfo: String
+
+  """可约时间"""
+  reducibleTime: [ReducibleTimeType!]
+}
+
+type CourseResult {
+  code: Int!
+  message: String!
+  data: CourseType
+}
+
+type CourseResults {
+  code: Int!
+  message: String!
+  data: [CourseType!]
+  page: Page
+}
+
 type Query {
   """使用id查询用户"""
   find(id: String!): UserType!
@@ -174,6 +246,8 @@ type Query {
   getStudents(page: PageInput!): StudentResults!
   getOrganizationInfo(id: String!): OrganizationResult!
   getOrganizations(page: PageInput!, name: String): OrganizationResults!
+  getCourseInfo(id: String!): CourseResult!
+  getCourses(page: PageInput!, name: String): CourseResults!
 }
 
 input PageInput {
@@ -202,6 +276,8 @@ type Mutation {
   commitStudentInfo(params: StudentInput!): StudentResult!
   commitOrganization(params: OrganizationInput!, id: String): OrganizationResult!
   deleteOrganization(id: String!): Result!
+  commitCourseInfo(params: PartialCourseInput!, id: String): CourseResult!
+  deleteCourse(id: String!): Result!
 }
 
 input UserInput {
@@ -274,4 +350,55 @@ input OrgImageInput {
   id: String
   url: String!
   remark: String
+}
+
+input PartialCourseInput {
+  """课程名称"""
+  name: String
+
+  """课程描述"""
+  desc: String
+
+  """适龄人群"""
+  group: String
+
+  """适合基础"""
+  baseAbility: String
+
+  """限制上课人数"""
+  limitNumber: Float
+
+  """持续时间"""
+  duration: Float
+
+  """预约信息"""
+  reserveInfo: String
+
+  """退款信息"""
+  refundInfo: String
+
+  """其他说明信息"""
+  otherInfo: String
+
+  """可约时间"""
+  reducibleTime: [ReducibleTimeInput!]
+}
+
+input ReducibleTimeInput {
+  """周几"""
+  week: String!
+
+  """可约时间 json"""
+  orderTime: [OrderTimeInput!]!
+}
+
+input OrderTimeInput {
+  """开始时间"""
+  startTime: String!
+
+  """结束时间"""
+  endTime: String!
+
+  """key"""
+  key: Float!
 }

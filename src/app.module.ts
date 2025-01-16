@@ -9,6 +9,7 @@ import { OSSModule } from './modules/oss/oss.module'
 import { AuthModule } from './modules/auth/auth.module'
 import { OrganizationModule } from './modules/organization/organization.module'
 import { StudentModule } from './modules/student/student.module'
+import { CourseModule } from './modules/course/course.module'
 
 @Module({
     imports: [
@@ -37,6 +38,7 @@ import { StudentModule } from './modules/student/student.module'
         AuthModule,
         StudentModule,
         OrganizationModule,
+        CourseModule,
     ],
     controllers: [AppController],
     providers: [AppService],
