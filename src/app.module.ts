@@ -10,6 +10,7 @@ import { AuthModule } from './modules/auth/auth.module'
 import { OrganizationModule } from './modules/organization/organization.module'
 import { StudentModule } from './modules/student/student.module'
 import { CourseModule } from './modules/course/course.module'
+import { CardModule } from './modules/card/card.module'
 
 @Module({
     imports: [
@@ -39,6 +40,7 @@ import { CourseModule } from './modules/course/course.module'
         StudentModule,
         OrganizationModule,
         CourseModule,
+        CardModule,
     ],
     controllers: [AppController],
     providers: [AppService],
