@@ -2,22 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserType {
-  id: String!
-
-  """昵称"""
-  name: String!
-
-  """简介"""
-  desc: String!
-
-  """tel"""
-  tel: String!
-
-  """头像"""
-  avatar: String
-}
-
 type Page {
   total: Int!
   pageNum: Int!
@@ -28,137 +12,6 @@ type Result {
   code: Int!
   message: String!
   data: String
-}
-
-type OSSType {
-  """过期时间"""
-  expire: String!
-
-  """策略"""
-  policy: String!
-
-  """签名"""
-  signature: String!
-
-  """key"""
-  accessId: String!
-
-  """host"""
-  host: String!
-
-  """文件夹"""
-  dir: String!
-}
-
-type OrgImageType {
-  id: String
-  url: String!
-  remark: String
-}
-
-type OrganizationType {
-  id: String!
-  createdAt: DateTime!
-  createdBy: String
-  updatedAt: DateTime
-  updatedBy: String
-  deletedAt: DateTime
-  deletedBy: String
-
-  """营业执照"""
-  businessLicense: String!
-
-  """法人身份证正面"""
-  identityCardFrontImg: String!
-
-  """法人身份证反面"""
-  identityCardBackImg: String!
-
-  """标签 以，隔开"""
-  tags: String
-
-  """简介"""
-  description: String
-
-  """机构名"""
-  name: String
-
-  """logo"""
-  logo: String
-
-  """经度"""
-  longitude: String
-
-  """纬度"""
-  latitude: String
-
-  """地址"""
-  address: String
-
-  """电话"""
-  tel: String
-
-  """封面图"""
-  orgFrontImg: [OrgImageType!]
-
-  """室内图"""
-  orgRoomImg: [OrgImageType!]
-
-  """其他图"""
-  orgOtherImg: [OrgImageType!]
-}
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
-type OrganizationResult {
-  code: Int!
-  message: String!
-  data: OrganizationType
-}
-
-type OrganizationResults {
-  code: Int!
-  message: String!
-  data: [OrganizationType!]
-  page: Page
-}
-
-type StudentType {
-  id: String!
-  createdAt: DateTime!
-  createdBy: String
-  updatedAt: DateTime
-  updatedBy: String
-  deletedAt: DateTime
-  deletedBy: String
-
-  """昵称"""
-  name: String
-
-  """手机号"""
-  tel: String
-
-  """头像"""
-  avatar: String
-
-  """账号"""
-  account: String
-}
-
-type StudentResult {
-  code: Int!
-  message: String!
-  data: StudentType
-}
-
-type StudentResults {
-  code: Int!
-  message: String!
-  data: [StudentType!]
-  page: Page
 }
 
 type OrderTimeType {
@@ -220,18 +73,10 @@ type CourseType {
   reducibleTime: [ReducibleTimeType!]
 }
 
-type CourseResult {
-  code: Int!
-  message: String!
-  data: CourseType
-}
-
-type CourseResults {
-  code: Int!
-  message: String!
-  data: [CourseType!]
-  page: Page
-}
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type CardType {
   """id"""
@@ -261,6 +106,247 @@ type CardType {
 
   """课程"""
   course: CourseType!
+}
+
+type OrgImageType {
+  id: String
+  url: String!
+  remark: String
+}
+
+type OrganizationType {
+  id: String!
+  createdAt: DateTime!
+  createdBy: String
+  updatedAt: DateTime
+  updatedBy: String
+  deletedAt: DateTime
+  deletedBy: String
+
+  """营业执照"""
+  businessLicense: String!
+
+  """法人身份证正面"""
+  identityCardFrontImg: String!
+
+  """法人身份证反面"""
+  identityCardBackImg: String!
+
+  """标签 以，隔开"""
+  tags: String
+
+  """简介"""
+  description: String
+
+  """机构名"""
+  name: String
+
+  """logo"""
+  logo: String
+
+  """经度"""
+  longitude: String
+
+  """纬度"""
+  latitude: String
+
+  """地址"""
+  address: String
+
+  """电话"""
+  tel: String
+
+  """封面图"""
+  orgFrontImg: [OrgImageType!]
+
+  """室内图"""
+  orgRoomImg: [OrgImageType!]
+
+  """其他图"""
+  orgOtherImg: [OrgImageType!]
+
+  """门店的课程"""
+  courses: [CourseType!]
+}
+
+type ProductType {
+  id: String!
+  createdAt: DateTime!
+  createdBy: String
+  updatedAt: DateTime
+  updatedBy: String
+  deletedAt: DateTime
+  deletedBy: String
+
+  """名称"""
+  name: String!
+
+  """描述"""
+  desc: String
+
+  """状态"""
+  status: String!
+
+  """距离"""
+  distance: String!
+
+  """分类"""
+  type: String
+
+  """库存总数"""
+  stock: Float!
+
+  """当前库存"""
+  curStock: Float!
+
+  """卖出去多少"""
+  buyNumber: Float!
+
+  """每人限购数量"""
+  limitBuyNumber: Float!
+
+  """封面图"""
+  coverUrl: String!
+
+  """头部banner图"""
+  bannerUrl: String!
+
+  """原价"""
+  originalPrice: Float!
+
+  """优惠价"""
+  preferentialPrice: Float!
+
+  """门店信息"""
+  org: OrganizationType!
+
+  """消费卡"""
+  cards: [CardType!]
+}
+
+type ProductTypeType {
+  """key"""
+  key: String!
+
+  """名称"""
+  title: String
+}
+
+type ProductResult {
+  code: Int!
+  message: String!
+  data: ProductType
+}
+
+type ProductResults {
+  code: Int!
+  message: String!
+  data: [ProductType!]
+  page: Page
+}
+
+type ProductTypesResults {
+  code: Int!
+  message: String!
+  data: [ProductTypeType!]
+  page: Page
+}
+
+type UserType {
+  id: String!
+
+  """昵称"""
+  name: String!
+
+  """简介"""
+  desc: String!
+
+  """tel"""
+  tel: String!
+
+  """头像"""
+  avatar: String
+}
+
+type OSSType {
+  """过期时间"""
+  expire: String!
+
+  """策略"""
+  policy: String!
+
+  """签名"""
+  signature: String!
+
+  """key"""
+  accessId: String!
+
+  """host"""
+  host: String!
+
+  """文件夹"""
+  dir: String!
+}
+
+type OrganizationResult {
+  code: Int!
+  message: String!
+  data: OrganizationType
+}
+
+type OrganizationResults {
+  code: Int!
+  message: String!
+  data: [OrganizationType!]
+  page: Page
+}
+
+type StudentType {
+  id: String!
+  createdAt: DateTime!
+  createdBy: String
+  updatedAt: DateTime
+  updatedBy: String
+  deletedAt: DateTime
+  deletedBy: String
+
+  """昵称"""
+  name: String
+
+  """手机号"""
+  tel: String
+
+  """头像"""
+  avatar: String
+
+  """账号"""
+  account: String
+}
+
+type StudentResult {
+  code: Int!
+  message: String!
+  data: StudentType
+}
+
+type StudentResults {
+  code: Int!
+  message: String!
+  data: [StudentType!]
+  page: Page
+}
+
+type CourseResult {
+  code: Int!
+  message: String!
+  data: CourseType
+}
+
+type CourseResults {
+  code: Int!
+  message: String!
+  data: [CourseType!]
+  page: Page
 }
 
 type CardResult {
@@ -293,6 +379,11 @@ type Query {
   getCourses(page: PageInput!, name: String): CourseResults!
   getCardInfo(id: String!): CardResult!
   getCards(courseId: String!, name: String): CardResults!
+  getProductInfo(id: String!): ProductResult!
+  getProductTypes: ProductTypesResults!
+  getProducts(page: PageInput!, name: String): ProductResults!
+  getProductsForH5(page: PageInput!, latitude: Float!, longitude: Float!, type: String, name: String): ProductResults!
+  getProductsByOrgIdForH5(orgId: String!): ProductResults!
 }
 
 input PageInput {
@@ -325,6 +416,9 @@ type Mutation {
   deleteCourse(id: String!): Result!
   commitCardInfo(params: CardInput!, courseId: String!, id: String): CardResult!
   deleteCard(id: String!): Result!
+  commitProductInfo(params: PartialProductInput!, id: String): ProductResult!
+  deleteProduct(id: String!): Result!
+  commitProductInfoForH5(params: PartialProductInput!, id: String): ProductResult!
 }
 
 input UserInput {
@@ -462,4 +556,39 @@ input CardInput {
 
   """有效期 (天)"""
   validateDay: Float!
+}
+
+input PartialProductInput {
+  """名称"""
+  name: String
+
+  """描述"""
+  desc: String
+
+  """分类"""
+  type: String
+
+  """状态"""
+  status: String
+
+  """库存总数"""
+  stock: Float
+
+  """每人限购数量"""
+  limitBuyNumber: Float
+
+  """封面图"""
+  coverUrl: String
+
+  """头部banner图"""
+  bannerUrl: String
+
+  """原价"""
+  originalPrice: Float
+
+  """优惠价"""
+  preferentialPrice: Float
+
+  """消费卡"""
+  cards: [String!]
 }

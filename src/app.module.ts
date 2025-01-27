@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common'
+import { ProductModule } from './modules/product/product.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { ApolloDriver } from '@nestjs/apollo'
 import { GraphQLModule } from '@nestjs/graphql'
@@ -41,6 +42,7 @@ import { CardModule } from './modules/card/card.module'
         OrganizationModule,
         CourseModule,
         CardModule,
+        ProductModule,
     ],
     controllers: [AppController],
     providers: [AppService],
