@@ -11,7 +11,6 @@ export class StudentType extends CommonType {
         nullable: true,
     })
     name: string
-
     @Field({
         description: '手机号',
         nullable: true,
@@ -29,4 +28,16 @@ export class StudentType extends CommonType {
         nullable: true,
     })
     account: string
+
+    @Field({
+        description: '密码',
+        nullable: true,
+    })
+    password: string
+
+    @Field({
+        description: 'openid',
+        nullable: true,
+    })
+    openid?: string
 }

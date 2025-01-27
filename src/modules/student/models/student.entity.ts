@@ -1,9 +1,5 @@
 import { CommonEntity } from '@/common/entities/common.entity'
-import { Column, Entity } from 'typeorm'
-
-/**
- * 组件
- */
+import { Entity, Column } from 'typeorm'
 @Entity('student')
 export class Student extends CommonEntity {
     @Column({
@@ -26,11 +22,19 @@ export class Student extends CommonEntity {
 
     @Column({
         comment: '密码',
+        nullable: true,
     })
     password: string
 
     @Column({
         comment: '账户',
+        nullable: true,
     })
     account: string
+
+    @Column({
+        comment: 'openid',
+        nullable: true,
+    })
+    openid?: string
 }

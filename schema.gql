@@ -321,6 +321,12 @@ type StudentType {
 
   """账号"""
   account: String
+
+  """密码"""
+  password: String
+
+  """openid"""
+  openid: String
 }
 
 type StudentResult {
@@ -371,8 +377,8 @@ type Query {
 
   """获取oss相关信息"""
   getOSSInfo: OSSType!
-  getStudentInfo: StudentResult!
-  getStudents(page: PageInput!): StudentResults!
+  getStudentInfo(id: String!): StudentResult!
+  getStudents(page: PageInput!, name: String): StudentResults!
   getOrganizationInfo(id: String!): OrganizationResult!
   getOrganizations(page: PageInput!, name: String): OrganizationResults!
   getCourseInfo(id: String!): CourseResult!
@@ -409,7 +415,15 @@ type Mutation {
 
   """登录"""
   login(tel: String!, code: String!): Result!
+
+  """学员登录"""
+  studentLogin(account: String!, password: String!): Result!
+
+  """学员注册"""
+  studentRegister(account: String!, password: String!): Result!
   commitStudentInfo(params: StudentInput!): StudentResult!
+  deleteStudent(id: String!): Result!
+  commitStudentInfoPC(params: StudentInput!, id: String!): StudentResult!
   commitOrganization(params: OrganizationInput!, id: String): OrganizationResult!
   deleteOrganization(id: String!): Result!
   commitCourseInfo(params: PartialCourseInput!, id: String): CourseResult!
@@ -434,13 +448,16 @@ input UserInput {
 
 input StudentInput {
   """昵称"""
-  name: String!
+  name: String
 
   """手机号"""
-  tel: String!
+  tel: String
+
+  """账号"""
+  account: String
 
   """头像"""
-  avatar: String!
+  avatar: String
 }
 
 input OrganizationInput {
